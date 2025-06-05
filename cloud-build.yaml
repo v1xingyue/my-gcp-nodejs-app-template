@@ -1,0 +1,11 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/my-app-image', '.']
+
+images:
+  - 'gcr.io/$PROJECT_ID/my-app-image'
+
+options:
+  logging: REGIONAL_USER_OWNED_BUCKET
+
+timeout: '900s'
