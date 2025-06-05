@@ -1,0 +1,83 @@
+# 依赖目录
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 构建输出
+dist
+build
+.next
+.nuxt
+
+# 环境变量文件
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE 和编辑器文件
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# Git 相关
+.git
+.gitignore
+
+# 测试覆盖率
+coverage
+.nyc_output
+
+# 临时文件
+*.tmp
+*.temp
+
+# 日志文件
+logs
+*.log
+
+# 运行时文件
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# 缓存目录
+.cache
+.parcel-cache
+
+# 文档和说明
+README.md
+*.md
+docs/
+
+# Docker 相关
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# CI/CD 配置
+.github/
+.gitlab-ci.yml
+.travis.yml
+.circleci/
+
+# 数据库文件（SQLite）
+*.sqlite
+*.db
+
+# 测试文件
+__tests__/
+*.test.ts
+*.test.js
+*.spec.ts
+*.spec.js 
