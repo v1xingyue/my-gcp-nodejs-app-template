@@ -120,6 +120,28 @@ const server = async () => {
     app.get("/health", (req, res) => {
         res.json({ status: "OK", message: "Server is running!" });
     });
+
+        // GraphQL Playground route
+    app.get("/playground", (req, res) => {
+        // 检查是否允许访问 playground
+        if (
+        process.env.NODE_ENV === "production" &&
+        !process.env.ALLOW_PLAYGROUND
+        ) {
+        return res.status(403).json({
+            status: "error",
+            message:
+            "GraphQL Playground is disabled in production. Set ALLOW_PLAYGROUND=true to enable it.",
+        });
+        }
+
+        // 直接返回内联的 HTML
+        const html = playgrounHTML;
+
+        res.setHeader("Content-Type", "text/html");
+        res.send(html);
+    });
+
     const PORT = process.env.PORT || 4000;
     app.listen(PORT, () => {
         console.log(`🚀 Server ready at http://localhost:${PORT}/graphql`);

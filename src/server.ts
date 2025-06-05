@@ -3,6 +3,7 @@ import { expressMiddleware } from "@apollo/server/express4";
 import express from "express";
 import cors from "cors";
 import { PrismaClient } from "@prisma/client";
+import { playgrounHTML } from "./playground";
 
 // Context interface definition
 interface Context {
@@ -158,6 +159,27 @@ const server = async () => {
       },
     })
   );
+
+  // GraphQL Playground route
+  app.get("/playground", (req, res) => {
+    // 检查是否允许访问 playground
+    if (
+      process.env.NODE_ENV === "production" &&
+      !process.env.ALLOW_PLAYGROUND
+    ) {
+      return res.status(403).json({
+        status: "error",
+        message:
+          "GraphQL Playground is disabled in production. Set ALLOW_PLAYGROUND=true to enable it.",
+      });
+    }
+
+    // 直接返回内联的 HTML
+    const html = playgrounHTML;
+
+    res.setHeader("Content-Type", "text/html");
+    res.send(html);
+  });
 
   // Health check endpoint
   app.get("/health", (req, res) => {
