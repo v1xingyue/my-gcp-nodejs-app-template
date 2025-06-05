@@ -6,6 +6,6 @@ images:
   - 'gcr.io/$PROJECT_ID/my-app-image'
 
 options:
-  logging: REGIONAL_USER_OWNED_BUCKET
+  logging: CLOUD_LOGGING_ONLY
 
 timeout: '900s'
